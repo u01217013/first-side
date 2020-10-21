@@ -6,6 +6,7 @@
 import tkinter as tk #上一段等開發經驗熟練之後再嘗試
 from PIL import Image
 from PIL import ImageTk
+#from tkmacosx import Button #為了可以在tkinter內更改Button的bg,所以需要套入這個模組，但要注意最好設置button寬度，不然button寬度不會自己配合文字大小，但是這組目前仍無法使用，因為mac系統預設不能更改button bg
 
 
 #建立主視窗
@@ -27,12 +28,26 @@ imLabel.pack() #pack() 函數就是一個版面管理員, 它會由上而下擺�
 
 #網址輸入區域＆下載清單 元件
 #設定"提示文字"要顯示的區域
-input_frm=tk.Frame(window,width=640,height=60) #建立一個寬640,高60的表格 
+input_frm=tk.Frame(window,width=640,height=50) #建立一個寬640,高60的Frame（框架）,將這個Frame放在window這個容器內
 input_frm.pack() #擺放Frame
 
 #設定提示文字內容
-lb=tk.Label(input_frm,text="請輸入欲下載的youtube網址",fg="black")  #將input_frm放入標籤內，並輸入提示文字內容
-lb.place(rely=0.2,relx=0.5,anchor="center") #tkinter有三種排版方式 pack()、grid()、place()。place()通常是用來製作客製化的版面管理員之用，詳細可以看http://yhhuang1966.blogspot.com/2018/10/python-gui-tkinter_12.html
+lb=tk.Label(input_frm,text="請輸入欲下載的youtube網址",fg="black")  #放在input_frm這個容器內，並輸入提示文字內容
+lb.place(rely=0.2,relx=0.5,anchor="center") #設定提示文字出現的位置 #tkinter有三種排版方式 pack()、grid()、place()。place()通常是用來製作客製化的版面管理員之用，詳細可以看http://yhhuang1966.blogspot.com/2018/10/python-gui-tkinter_12.html
+
+#設定輸入框
+input_url=tk.StringVar() #取得輸入的網址 宣告字串的變數 StringVar()＝跟蹤變量的值的變化，以保證值的變更隨時可以顯示在界面上
+input_et=tk.Entry(input_frm,textvariable=input_url,width=48) #Entry表示文字欄位，放在input_frm這個容器內 #textvariable 文字框的值，接收StringVar的值 
+input_et.place(rely=0.75,relx=0.5,anchor="center") #設定輸入框出現的位置
+
+#設定按鈕
+def btn_clink(): #撰寫按鈕的函示
+    print("後面會講解寫法")
+btn =tk.Button(input_frm,text="Download",command=btn_clink,fg="red")
+btn.place(rely=0.75,relx=0.9,anchor="center")
+
+
+
 
 
 
