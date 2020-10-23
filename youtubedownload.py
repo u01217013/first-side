@@ -32,25 +32,35 @@ input_frm=tk.Frame(window,width=640,height=50) #建立一個寬640,高60的Frame
 input_frm.pack() #擺放Frame
 
 #設定提示文字內容
-lb=tk.Label(input_frm,text="請輸入欲下載的youtube網址",fg="black")  #放在input_frm這個容器內，並輸入提示文字內容
+lb=tk.Label(input_frm,text="請輸入欲下載的youtube網址",fg="black")  #放在input_frm這個容器內，並輸入提示文字內容 #Label控制元件：Label 控制元件用以顯示文字和圖片. Label 通常被用來展示資訊, 而非與使用者互動. 
 lb.place(rely=0.2,relx=0.5,anchor="center") #設定提示文字出現的位置 #tkinter有三種排版方式 pack()、grid()、place()。place()通常是用來製作客製化的版面管理員之用，詳細可以看http://yhhuang1966.blogspot.com/2018/10/python-gui-tkinter_12.html
 
 #設定輸入框
 input_url=tk.StringVar() #取得輸入的網址 宣告字串的變數 StringVar()＝跟蹤變量的值的變化，以保證值的變更隨時可以顯示在界面上
 input_et=tk.Entry(input_frm,textvariable=input_url,width=48) #Entry表示文字欄位，放在input_frm這個容器內 #textvariable 文字框的值，接收StringVar的值 
-input_et.place(rely=0.75,relx=0.5,anchor="center") #設定輸入框出現的位置
+input_et.place(rely=0.75,relx=0.5,anchor="center") #設定輸入框出現的位置 #anchor用來指定元件在父容器中的 9 個錨定方位 詳細可以看http://yhhuang1966.blogspot.com/2018/10/python-gui-tkinter_12.html
 
 #設定按鈕
 def btn_clink(): #撰寫按鈕的函示
     print("後面會講解寫法")
-btn =tk.Button(input_frm,text="Download",command=btn_clink,fg="red")
-btn.place(rely=0.75,relx=0.9,anchor="center")
+btn =tk.Button(input_frm,text="Download",command=btn_clink,fg="red") #fg表示前景顏色，command指定按鈕要呼叫的函式
+btn.place(rely=0.75,relx=0.9,anchor="center") #設定輸入框出現的位置 rely跟relx是相對位置，調整主視窗大小時，會因為被設定了相對位置，會自己跟著主視窗變動
 
+#下載清單區域
+dl_frm=tk.Frame(window,width=640,height=350) #建立一個寬640,高280的Frame（框架）,將這個Frame放在window這個容器內
+dl_frm.pack()
 
-##測試用
+#設定下載區域的提示文字內容
+lb=tk.Label(dl_frm,text="下載清單",fg="black")
+lb.place(rely=0.1,relx=0.5,anchor="center")
 
+#設定顯示清單
+listbox=tk.Listbox(dl_frm,width=65,height=15) #Listbox下拉式選單
+listbox.place(rely=0.52,relx=0.5,anchor="center")
 
-
+#設定捲軸
+scrollbar=tk.Scrollbar(listbox)
+scrollbar.place(rely=0.5, relx=0.98, anchor='center', relheight=0.75)
 
 
 
